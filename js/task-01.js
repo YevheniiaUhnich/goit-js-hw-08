@@ -1,3 +1,5 @@
+
+const gallery = document.querySelector('.gallery');
 const images = [
     {
       preview:
@@ -64,13 +66,20 @@ const images = [
     },
   ];
 
-  const gallery = document.querySelector('.gallery');
-  gallery.addEventListener('click', function(event) {
-    if (event.target.classList.contains('gallery-image')) {
-      const largeImage = event.target.dataset.source;
-      const instance = basicLightbox.create(`<img src="${largeImage}" alt="Image description" />`);
-      instance.show();
+
+  gallery.addEventListener('click', (event) => {
+    event.preventDefault(); 
+    if (event.target.classList.contains('gallery-link')) { 
+      const source = event.target.querySelector('.gallery-image').dataset.source; 
+      console.log(source); 
+    }
+    const galleryItem = event.target.closest('.gallery-item');
+  
+    if (galleryItem) {
+      const source = galleryItem.querySelector('.gallery-image').dataset.source;
+      console.log(source);
     }
   });
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/basiclightbox/5.1.1/basicLightbox.min.js"></script>
+
+ console.log("task-01")
