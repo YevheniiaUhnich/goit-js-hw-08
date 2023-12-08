@@ -1,5 +1,3 @@
-
-const gallery = document.querySelector('.gallery');
 const images = [
     {
       preview:
@@ -67,19 +65,49 @@ const images = [
   ];
 
 
-  gallery.addEventListener('click', (event) => {
-    event.preventDefault(); 
-    if (event.target.classList.contains('gallery-link')) { 
-      const source = event.target.querySelector('.gallery-image').dataset.source; 
-      console.log(source); 
-    }
-    const galleryItem = event.target.closest('.gallery-item');
-  
-    if (galleryItem) {
-      const source = galleryItem.querySelector('.gallery-image').dataset.source;
-      console.log(source);
+const gallery = document.querySelector('.gallery');
+const elements = images.reduce(
+  (htmlTotal, image) =>
+    htmlTotal +
+    `<li class="gallery-item">
+  <a class="gallery-link" href="${image.original}">
+    <img
+      class="gallery-image"
+      src="${image.preview}"
+      data-source="${image.original}"
+      alt="${image.description}"
+    />
+  </a>
+</li>`,
+  '',
+);
+gallery.insertAdjacentHTML('afterbegin', elements);
+gallery.addEventListener('click', event => {
+  event.preventDefault();
+  if (event.target.nodeName !== 'IMG') return;
+  const htmlItem = `<div class = "mobil-window">
+            <img src="${event.target.dataset.source}">
+    </div>`;
+  gallery.removeEventListener('click', event);
+  const instance = basicLightbox.create(htmlItem, {
+    onShow: instance => {
+      gallery.addEventListener('click', event);
+      event.preventDefault();
+      console.log(`OPEN`);
+    },
+    onClose: instance => {
+      gallery.removeEventListener(`click`, event), console.log('CLOSE');
+      document.removeEventListener(`keydown`, event),
+        console.log('CLOSE ESC keydown');
+    },
+  });
+  instance.show(instance => console.log(' SHOW'));
+  document.addEventListener('keydown', event => {
+    if (event.code === 'Escape') {
+      instance.close();
     }
   });
+}); 
 
-
+  
  console.log("task-01")

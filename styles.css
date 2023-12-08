@@ -1,6 +1,10 @@
 .gallery {
 display: flex;
 flex-wrap: wrap;
+justify-content: center;
+gap: 20px;
+list-style: none;
+width: calc(100% - 48px)/3;
 }
 
 .gallery-item {
@@ -12,9 +16,9 @@ flex-wrap: wrap;
 }
 
 .large-image {
-
+    width: 1280px;
 }
 
 .gallery-image {
-
+    width: 420px;
 }
