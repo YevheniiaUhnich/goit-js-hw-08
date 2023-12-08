@@ -96,7 +96,8 @@ gallery.addEventListener('click', event => {
       console.log(`OPEN`);
     },
     onClose: instance => {
-      gallery.removeEventListener(`click`, event), console.log('CLOSE');
+      gallery.removeEventListener(`click`, event), 
+      console.log('CLOSE');
       document.removeEventListener(`keydown`, event),
         console.log('CLOSE ESC keydown');
     },

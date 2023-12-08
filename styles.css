@@ -12,7 +12,8 @@ width: calc(100% - 48px)/3;
 }
 
 .gallery-link {
-
+    display: flex;
+    justify-content: center;
 }
 
 .large-image {
@@ -20,5 +21,5 @@ width: calc(100% - 48px)/3;
 }
 
 .gallery-image {
-    width: 420px;
+    width: 380px;
 }
