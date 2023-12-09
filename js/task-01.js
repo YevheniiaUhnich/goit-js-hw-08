@@ -64,6 +64,7 @@ const images = [
     },
   ];
 
+ 
 
   const gallery = document.querySelector('.gallery');
   const elements = images.reduce(
