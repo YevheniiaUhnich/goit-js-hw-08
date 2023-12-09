@@ -119,4 +119,3 @@ const images = [
     });
   });
   
- console.log("task-01")
