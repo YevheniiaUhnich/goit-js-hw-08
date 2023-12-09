@@ -1,3 +1,5 @@
+'use script'
+
 const images = [
     {
       preview:
