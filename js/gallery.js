@@ -92,7 +92,7 @@ const images = [
   
   function openModal(source) {
     const instance = basicLightbox.create(`
-      <img src="${source}" width="800" height="600">
+      <img src="${source}" width="1112" height="600">
     `);
   
     instance.show();
